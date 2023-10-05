@@ -1,7 +1,9 @@
-# soen342-project
+# Soen342-project
+
+# Preliminary Iteration:
 
 Members:
-| Name  | Id | Email | Section |
+| Name  | ID | Email | Section |
 | ------------- | ------------- | ------------- | ------------- |
 | Ali Fetanat  | 40158208  | fetyali7@gmail.com  | II |
 | Louis Villemure  | 40210315  | louis.villemure@gmail.com  | II |
