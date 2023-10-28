@@ -2,7 +2,7 @@ package Iteration1.Implementation;
 
 import java.util.logging.Logger;
 
-public class System {
+public class SensorSystem {
 
     private Integer numSensors;
 
@@ -24,7 +24,9 @@ public class System {
         }
 
         boolean isDeployed = sensor.getIsDeployed();
-        SensorLocationPairings locationExists = SensorLocationPairings.locationExists(location);
+
+        // Fetch sensor if there exists one for this location
+        Sensor locationExists = SensorLocationPairings.locationExists(location);
 
         if (isDeployed && locationExists == null) {
             throw new IllegalArgumentException("Sensor is already deployed");
@@ -36,7 +38,11 @@ public class System {
             throw new IllegalArgumentException("Sensor is already deployed and location is already used");
         }
 
-        SensorLocationPairing.createPairing(sensor, location);
+        // Create Pairing
+        SensorLocationPairing<Sensor, Location> pairing = new SensorLocationPairing<Sensor, Location>(sensor, location);
+
+        // Add pairing to the list of SensorLocation Pairings
+        SensorLocationPairings.addSensorLocationPairing(pairing);
 
         sensor.setIsDeployed(true);
 
@@ -48,9 +54,15 @@ public class System {
         if (location == null) {
             throw new IllegalArgumentException("Location is null");
         }
-        Sensor sensor = SensorLocationPairings.getSensorFromLocation(location);
+        
+        // Fetch sensor if there exists one for this location
+        Sensor sensor = SensorLocationPairings.locationExists(location);
 
-        return updateSensorTemperature(sensor.getID());
+        // TODO
+        if(sensor != null){
+            return updateSensorTemperature(sensor.getID());
+        }
+        return 0;
     }
 
 
