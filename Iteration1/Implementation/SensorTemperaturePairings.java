@@ -1,6 +1,7 @@
 package Iteration1.Implementation;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class SensorTemperaturePairings {
@@ -20,7 +21,7 @@ public class SensorTemperaturePairings {
     }
 
     //Add pairing
-    public void addPairing(String sensorId){
+    public void addPairing(Integer sensorId){
         SensorTemperaturePairing newPairing = new SensorTemperaturePairing(sensorId);
         pairings.add(newPairing);
         
@@ -35,9 +36,9 @@ public class SensorTemperaturePairings {
 
 
     //Get pairing by sensorId
-    public Temperature getPairing(String sensorId){
+    public Temperature getPairing(Integer sensorId){
         for(SensorTemperaturePairing pairing: pairings){
-            if(pairing.getSensorId().equals(sensorId)){
+            if(Objects.equals(pairing.getSensorId(), sensorId)){
                 return pairing.getTemperature();
             }
         }

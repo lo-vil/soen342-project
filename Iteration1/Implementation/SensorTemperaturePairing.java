@@ -2,12 +2,12 @@ package Iteration1.Implementation;
 import java.util.Random;
 
 public class SensorTemperaturePairing{
-    private String sensorId;
+    private final Integer sensorId;
     private Temperature temperature;
 
 
     //Constructor
-    public SensorTemperaturePairing(String sensorId){
+    public SensorTemperaturePairing(Integer sensorId){
         this.sensorId = sensorId;
         this.temperature = generateRandomTemperature();
     }
@@ -20,7 +20,7 @@ public class SensorTemperaturePairing{
     public Temperature getTemperature(){
         return temperature;
     }
-    public String getSensorId(){
+    public Integer getSensorId(){
         return sensorId;
     }
     public void updateRandomTemperature(){

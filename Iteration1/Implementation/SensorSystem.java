@@ -6,7 +6,7 @@ public class SensorSystem {
 
     private Integer numSensors;
 
-    public void system () {
+    public SensorSystem() {
 
     }
 
@@ -39,7 +39,7 @@ public class SensorSystem {
         }
 
         // Create Pairing
-        SensorLocationPairing<Sensor, Location> pairing = new SensorLocationPairing<Sensor, Location>(sensor, location);
+        SensorLocationPairing<Sensor, Location> pairing = new SensorLocationPairing<>(sensor, location);
 
         // Add pairing to the list of SensorLocation Pairings
         SensorLocationPairings.addSensorLocationPairing(pairing);
@@ -58,11 +58,10 @@ public class SensorSystem {
         // Fetch sensor if there exists one for this location
         Sensor sensor = SensorLocationPairings.locationExists(location);
 
-        // TODO
         if(sensor != null){
-            return updateSensorTemperature(sensor.getID());
+            return SensorTemperaturePairings.getInstance().getPairing(sensor.getID()).getValue();
         }
-        return 0;
+        throw new IllegalArgumentException("Sensor not found");
     }
 
 

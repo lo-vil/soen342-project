@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 public class Sensor {
-    private static Integer _ID;
-    private static Boolean _isDeployed;
+    private final Integer _ID;
+    private Boolean _isDeployed;
 
     //constructor
     public Sensor() {
