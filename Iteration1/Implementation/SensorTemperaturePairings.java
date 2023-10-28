@@ -10,7 +10,6 @@ public class SensorTemperaturePairings {
     private static SensorTemperaturePairings instance = null;
 
     private SensorTemperaturePairings(){
-        pairings = new ArrayList<>();
     }
     
     public static SensorTemperaturePairings getInstance(){
