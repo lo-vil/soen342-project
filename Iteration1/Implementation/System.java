@@ -11,12 +11,11 @@ public class System {
     }
 
     // deploy a new sensor or an existing sensor at the given location
-    public void deploySensor(Sensor sensorObj, String coordinates) {
-        if (coordinates == null) {
+    public void deploySensor(Sensor sensorObj, Location location) {
+        if (location == null) {
             throw new IllegalArgumentException("Location is null");
         }
         if (SensorRegistry.findSensor(sensorObj.getID()) == null) {
-            //sensor.setIsDeployed(true);  not right place
             SensorRegistry.addSensorToList(sensorObj);
         }
         Sensor sensor = SensorRegistry.findSensor(sensorObj.getID());
@@ -25,37 +24,33 @@ public class System {
         }
 
         boolean isDeployed = sensor.getIsDeployed();
-        boolean locationExists = SensorLocationPairings.locationExists(coordinates);
+        SensorLocationPairings locationExists = SensorLocationPairings.locationExists(location);
 
-        if (isDeployed && !locationExists) {
+        if (isDeployed && locationExists == null) {
             throw new IllegalArgumentException("Sensor is already deployed");
         }
-        if (!isDeployed && locationExists) {
+        if (!isDeployed && locationExists != null) {
             throw new IllegalArgumentException("Location is already used");
         }
         if (isDeployed) {
             throw new IllegalArgumentException("Sensor is already deployed and location is already used");
         }
 
-        Location.createLocation(coordinates);
-        SensorLocationPairing.createPairing(sensor, coordinates);
+        SensorLocationPairing.createPairing(sensor, location);
 
         sensor.setIsDeployed(true);
 
-        Logger.getLogger(System.class.getName()).info("Successfully deployed sensor " + sensor.getID() + " at location " + coordinates);
+        Logger.getLogger(System.class.getName()).info("Successfully deployed sensor " + sensor.getID() + " at location " + location.getCoordinates());
     }
 
     // returns the temperature of the sensor
-    public float readTemperature(String coordinates) {
-        if (coordinates == null) {
+    public float readTemperature(Location location) {
+        if (location == null) {
             throw new IllegalArgumentException("Location is null");
         }
-        SensorLocationPairings pairingObj = SensorLocationPairings.pairingObjAtLocation(coordinates);
-        if (pairingObj == null) {
-            throw new IllegalArgumentException("Location is not used");
-        }
+        Sensor sensor = SensorLocationPairings.getSensorFromLocation(location);
 
-        return updateSensorTemperature(pairingObj.sensor.getID());
+        return updateSensorTemperature(sensor.getID());
     }
 
 
