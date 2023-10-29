@@ -18,13 +18,10 @@ public class SensorTemperaturePairing{
         return new Temperature(randomTempValue, "C");
     }
     public Temperature getTemperature(){
-        return temperature;
+        return generateRandomTemperature();
     }
     public Integer getSensorId(){
         return sensorId;
-    }
-    public void updateRandomTemperature(){
-        this.temperature = generateRandomTemperature();
     }
 
 }
