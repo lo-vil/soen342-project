@@ -42,12 +42,14 @@ public class SensorRegistry {
 
         if (sensor != null) {
             return sensor.getIsDeployed();
+        } else {
+            System.out.println("Sensor not found. Try Again.");
+            throw new IllegalArgumentException("Sensor not found");
         }
-        throw new IllegalArgumentException("Sensor not found");
     }
 
     // Method to find number of sensors in the registry list
-    public Integer getNbOfSensors() {
+    public static Integer getNbOfSensors() {
         return registry.size();
     }
 }
