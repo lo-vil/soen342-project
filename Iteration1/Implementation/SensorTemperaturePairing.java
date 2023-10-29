@@ -1,27 +1,27 @@
 package Iteration1.Implementation;
 import java.util.Random;
 
-public class SensorTemperaturePairing{
-    private final Integer sensorId;
-    private Temperature temperature;
+public class SensorTemperaturePairing<S, T> {
+    private final S sensor;
 
-
-    //Constructor
-    public SensorTemperaturePairing(Integer sensorId){
-        this.sensorId = sensorId;
-        this.temperature = generateRandomTemperature();
+    // Constructor
+    public SensorTemperaturePairing(S sensor, T temperature) {
+        this.sensor = sensor;
     }
 
-    private Temperature generateRandomTemperature(){
+    // Generate random temperature
+    public static Temperature generateRandomTemperature() {
         Random rand = new Random();
         float randomTempValue = -40.0f + 80.0f * rand.nextFloat();
         return new Temperature(randomTempValue, "C");
     }
-    public Temperature getTemperature(){
-        return generateRandomTemperature();
-    }
-    public Integer getSensorId(){
-        return sensorId;
+
+    // Getter methods
+    public T getTemperature() {
+        return (T) generateRandomTemperature();
     }
 
+    public S getSensor() {
+        return sensor;
+    }
 }

@@ -1,33 +1,34 @@
 package Iteration1.Implementation;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.logging.Logger;
 
 public class SensorTemperaturePairings {
-    private List<SensorTemperaturePairing> pairings = new ArrayList<>();
 
-    private static final SensorTemperaturePairings instance = new SensorTemperaturePairings();
 
-    private SensorTemperaturePairings(){
-    }
-    
-    public static SensorTemperaturePairings getInstance(){
-        return instance;
-    }
+    private static final List<SensorTemperaturePairing<Sensor, Temperature>> sensorTemperaturePairings = new ArrayList<>();
 
     //Add pairing
-    public void addPairing(Integer sensorId){
-        SensorTemperaturePairing newPairing = new SensorTemperaturePairing(sensorId);
-        pairings.add(newPairing);
+    public static void addSensorTemperaturePairing(SensorTemperaturePairing<Sensor, Temperature> pairing){
+        try{
+            sensorTemperaturePairings.add(pairing);
+            Logger.getLogger(SensorTemperaturePairings.class.getName()).info("Added sensor to temperature pairing list");
+        } catch(Exception e){
+            Logger.getLogger(SensorTemperaturePairings.class.getName()).severe(e.getMessage());
+        }
     }
 
     //Get pairing by sensorId
-    public Temperature getPairing(Integer sensorId){
-        for(SensorTemperaturePairing pairing: pairings){
-            if(Objects.equals(pairing.getSensorId(), sensorId)){
-                return pairing.getTemperature();
+    public static Temperature getPairing(Integer sensorId){
+        for (SensorTemperaturePairing<Sensor, Temperature> sensorTemperaturePairing : sensorTemperaturePairings) {
+            if (sensorTemperaturePairing.getSensor().getID().equals(sensorId)) {
+                return sensorTemperaturePairing.getTemperature();
             }
         }
         return null;
+    }
+
+    public static Integer getNbOfSensorTemperaturePairings() {
+        return sensorTemperaturePairings.size();
     }
 }
