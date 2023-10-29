@@ -10,7 +10,7 @@ Members:
 | Xavier Guertin  | 40213525  | xavierguertin@gmail.com  | H |
 
 
-#Iteration 1
+# Iteration 1
 
 [![YouTube Video](https://img.youtube.com/vi/wyxcbt0u6bU/maxresdefault.jpg)](https://www.youtube.com/watch?v=wyxcbt0u6bU)
 
