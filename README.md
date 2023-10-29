@@ -12,4 +12,5 @@ Members:
 
 #Iteration 1
 
-[![watch the demo](https://user-images.githubusercontent.com/70493307/227747158-9753bb06-dcb2-40cb-aa6b-ba1a5a0bad7a.jpeg)](https://youtu.be/wyxcbt0u6bU)
+[![YouTube Video](https://img.youtube.com/vi/wyxcbt0u6bU/maxresdefault.jpg)](https://www.youtube.com/watch?v=wyxcbt0u6bU)
+
