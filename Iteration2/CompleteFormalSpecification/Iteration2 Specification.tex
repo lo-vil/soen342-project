@@ -120,14 +120,12 @@
 			\Delta TempMonitor\\
 			sensor? : SENSOR\_TYPE\\
 			newSensor? : SENSOR\_TYPE\\
-			location? : LOCATION\_TYPE\\
 			\where
 			sensor? \in deployed\\
 			newSensor? \notin deployed\\
-			location? = map(sensor?)\\
 			deployed' = (deployed \setminus \{sensor?\}) \cup {newSensor?}\\
-			map' = (map \setminus \{sensor? \mapsto location?\}) \cup \{newSensor? \mapsto location?\} \\
-			read' = (read \setminus \{sensor?\}) \cup \{newSensor? \mapsto read(oldSensor?)\}
+			map' = map \oplus \{newSensor? \mapsto map(sensor?)\}\\
+			read' = read \oplus \{newSensor? \mapsto read(sensor?)\}\\
 		\end{schema}
 		
 		
