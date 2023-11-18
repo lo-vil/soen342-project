@@ -79,7 +79,16 @@ public class SensorSystem {
         }
     }
 
+    // returns a list that contains the sensorID with its corresponding location (using sensorLocationPairings list) and temperature
+    public static String getAllLocationsWithTemperatures() {
+        StringBuilder status = new StringBuilder();
+        for (SensorLocationPairing<Sensor, Location> sensorLocationPairing : SensorLocationPairings.getSensorLocationPairings()) {
+            Sensor sensor = sensorLocationPairing.getSensor();
+            Location location = sensorLocationPairing.getLocation();
+            Temperature temperature = SensorTemperaturePairings.getPairing(sensor.getID());
 
-
-
+            status.append("Sensor ID: ").append(sensor.getID()).append(" is deployed at ").append(location.getCoordinates()).append(" and has a temperature of ").append(temperature.toString()).append("\n");
+        }
+        return status.toString();
+    }
 }
