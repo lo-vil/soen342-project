@@ -28,4 +28,8 @@ public class SensorLocationPairings {
     public static Integer getNbOfSensorLocationPairings() {
         return sensorLocationPairings.size();
     }
+
+    public static List<SensorLocationPairing<Sensor, Location>> getSensorLocationPairings() {
+        return sensorLocationPairings;
+    }
 }

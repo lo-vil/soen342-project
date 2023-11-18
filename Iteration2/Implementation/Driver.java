@@ -76,5 +76,8 @@ public class Driver {
 
         // Print the number of sensor temperature pairings
         System.out.println("The number of sensor temperature pairings is: " + SensorTemperaturePairings.getNbOfSensorTemperaturePairings());
+
+        // Print all sensor, location and temperature pairings
+        System.out.println("Collection of locations and their respective temperature (including the sensor ID)\n" + SensorSystem.getAllLocationsWithTemperatures());
     }
 }
