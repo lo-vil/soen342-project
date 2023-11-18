@@ -1,0 +1,19 @@
+1.	Each sensor deployed by the system must have a unique id:
+
+context SensorSystem
+inv:	self.sensorRegistry.sensors -> forAll( s1, s2 | s1 <> s2  implies  s1._ID <> s2._ID)
+
+2.	All sensors deployed in the system are sensors that are maintained by the system:
+
+context SensorSystem
+inv:	self.sensors -> forAll( s | SensorSystem.SensorRegistry.sensors -> includes(s))
+
+3.	Every deployed sensor must be associated with a location that exists in the corresponding location registry:
+	
+context SensorSystem
+inv: 	self.SensorRegistry.sensors -> forAll( s | self.SensorLocationPairings.sensors -> includes(s))
+
+4.	Every location maintained by the system is associated with a unique sensor.
+
+context SensorSystem
+inv : 	self.Locations -> forAll(l | l.sensor -> size() = 1)
