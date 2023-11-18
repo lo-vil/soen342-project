@@ -94,7 +94,7 @@ public class SensorSystem {
 
     public static void ReplaceSensor(Sensor oldSensor, Sensor newSensor) {
         System.out.println("Attempting to replace oldSensor (id: " + oldSensor.getID() + ") with newSensor (id: " + newSensor.getID() + ")");
-        if(!(SensorRegistry.findSensor(oldSensor.getID()) == null)) {
+        if(SensorRegistry.findSensor(oldSensor.getID()) != null && SensorRegistry.findSensor(oldSensor.getID()).getIsDeployed()) {
             if(SensorRegistry.findSensor(newSensor.getID()) == null){
                 SensorRegistry.replaceSensor(oldSensor, newSensor);
                 SensorLocationPairings.replaceSensor(oldSensor, newSensor);
