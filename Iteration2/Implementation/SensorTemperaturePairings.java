@@ -32,4 +32,14 @@ public class SensorTemperaturePairings {
     public static Integer getNbOfSensorTemperaturePairings() {
         return sensorTemperaturePairings.size();
     }
+
+    // Replace Sensor given the oldSensor is paired and newSensor isn't
+    public static void replaceSensor(Sensor oldSensor, Sensor newSensor){
+        for(SensorTemperaturePairing<Sensor, Temperature> sensorTemperaturePairing : sensorTemperaturePairings){
+            if(sensorTemperaturePairing.getSensor().equals(oldSensor)) {
+                sensorTemperaturePairing = new SensorTemperaturePairing<Sensor, Temperature>(newSensor, sensorTemperaturePairing.getTemperature());
+                System.out.println("newSensor (id: " + sensorTemperaturePairing.getSensor().getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorTemperaturePairings");
+            }
+        }
+    }
 }

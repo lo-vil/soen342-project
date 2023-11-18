@@ -91,4 +91,19 @@ public class SensorSystem {
         }
         return status.toString();
     }
+
+    public static void ReplaceSensor(Sensor oldSensor, Sensor newSensor) {
+        System.out.println("Attempting to replace oldSensor (id: " + oldSensor.getID() + ") with newSensor (id: " + newSensor.getID() + ")");
+        if(!(SensorRegistry.findSensor(oldSensor.getID()) == null)) {
+            if(SensorRegistry.findSensor(newSensor.getID()) == null){
+                SensorRegistry.replaceSensor(oldSensor, newSensor);
+                SensorLocationPairings.replaceSensor(oldSensor, newSensor);
+                SensorTemperaturePairings.replaceSensor(oldSensor, newSensor);
+            } else {
+                System.out.println("newSensor is already deployed");
+            }
+        } else {
+            System.out.println("oldSensor does not exist in the Sensor Registry");
+        }
+    }
 }
