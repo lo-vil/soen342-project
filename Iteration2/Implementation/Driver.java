@@ -77,7 +77,33 @@ public class Driver {
         // Print the number of sensor temperature pairings
         System.out.println("The number of sensor temperature pairings is: " + SensorTemperaturePairings.getNbOfSensorTemperaturePairings());
 
+        System.out.println();
+        System.out.println("========================================================================");
+        System.out.println();
+
         // Print all sensor, location and temperature pairings
         System.out.println("Collection of locations and their respective temperature (including the sensor ID)\n" + SensorSystem.getAllLocationsWithTemperatures());
+        
+        System.out.println();
+        System.out.println("========================================================================");
+        System.out.println();
+
+        Sensor sensorNotInRegistry = new Sensor();
+        Sensor sensorAlreadyPaired = sensor3;
+        Sensor oldSensor = sensor4;
+        Sensor newSensor = new Sensor();
+
+        System.out.println();
+        System.out.println("========================================================================");
+        System.out.println();
+        
+        // When oldSensor is not deployed
+        SensorSystem.ReplaceSensor(sensorNotInRegistry, newSensor);
+        // When newSensor has already been deployed
+        System.out.println();
+        SensorSystem.ReplaceSensor(oldSensor, sensorAlreadyPaired);
+        // Successful example of replaceSensor
+        System.out.println();
+        SensorSystem.ReplaceSensor(oldSensor, newSensor);
     }
 }

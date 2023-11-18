@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 public class SensorLocationPairings {
     private static List<SensorLocationPairing<Sensor, Location>> sensorLocationPairings = new ArrayList<>();
 
+    // Add Pairing
     public static void addSensorLocationPairing(SensorLocationPairing<Sensor, Location> pairing){
         try{
             sensorLocationPairings.add(pairing);
@@ -16,6 +17,7 @@ public class SensorLocationPairings {
         }
     }
 
+    // Check if location is paired to a sensor
     public static Sensor locationExists(Location location){
         for (SensorLocationPairing<Sensor, Location> sensorLocationPairing : sensorLocationPairings) {
             if (sensorLocationPairing.getLocation().equals(location)) {
@@ -31,5 +33,15 @@ public class SensorLocationPairings {
 
     public static List<SensorLocationPairing<Sensor, Location>> getSensorLocationPairings() {
         return sensorLocationPairings;
+    }
+
+    // Replace Sensor given the oldSensor is paired and newSensor isn't
+    public static void replaceSensor(Sensor oldSensor, Sensor newSensor){
+        for(SensorLocationPairing<Sensor, Location> sensorLocationPairing : sensorLocationPairings){
+            if(sensorLocationPairing.getSensor().equals(oldSensor)) {
+                sensorLocationPairing = new SensorLocationPairing<Sensor, Location>(newSensor, sensorLocationPairing.getLocation());
+                System.out.println("newSensor (id: " + sensorLocationPairing.getSensor().getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorLocationPairings");
+            }
+        }
     }
 }
