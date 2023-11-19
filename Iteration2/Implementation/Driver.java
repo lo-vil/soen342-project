@@ -101,5 +101,6 @@ public class Driver {
         // Successful example of replaceSensor
         System.out.println();
         SensorSystem.ReplaceSensor(oldSensor, newSensor);
+        System.out.println("Collection of locations and their respective temperature (including the sensor ID)\n" + SensorSystem.getAllLocationsWithTemperatures());
     }
 }
