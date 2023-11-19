@@ -93,10 +93,6 @@ public class Driver {
         Sensor oldSensor = sensor4;
         Sensor newSensor = new Sensor();
 
-        System.out.println();
-        System.out.println("========================================================================");
-        System.out.println();
-        
         // When oldSensor is not deployed
         SensorSystem.ReplaceSensor(sensorNotInRegistry, newSensor);
         // When newSensor has already been deployed
