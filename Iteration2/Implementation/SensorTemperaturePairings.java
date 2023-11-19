@@ -35,10 +35,10 @@ public class SensorTemperaturePairings {
 
     // Replace Sensor given the oldSensor is paired and newSensor isn't
     public static void replaceSensor(Sensor oldSensor, Sensor newSensor){
-        for(SensorTemperaturePairing<Sensor, Temperature> sensorTemperaturePairing : sensorTemperaturePairings){
-            if(sensorTemperaturePairing.getSensor().equals(oldSensor)) {
-                sensorTemperaturePairing = new SensorTemperaturePairing<Sensor, Temperature>(newSensor, sensorTemperaturePairing.getTemperature());
-                System.out.println("newSensor (id: " + sensorTemperaturePairing.getSensor().getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorTemperaturePairings");
+        for (int i = 0; i < sensorTemperaturePairings.size(); i++){
+            if(sensorTemperaturePairings.get(i).getSensor().equals(oldSensor)){
+                sensorTemperaturePairings.set(i, new SensorTemperaturePairing<>(newSensor, sensorTemperaturePairings.get(i).getTemperature()));
+                System.out.println("newSensor (id: " + newSensor.getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorTemperaturePairings");
             }
         }
     }

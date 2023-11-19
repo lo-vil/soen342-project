@@ -55,10 +55,10 @@ public class SensorRegistry {
 
     // Replace Sensor given the oldSensor is paired and newSensor isn't
     public static void replaceSensor(Sensor oldSensor, Sensor newSensor){
-        for(SensorRegistry sensorInList : getRegistry()){
-            if(sensorInList.sensor.equals(oldSensor)){
-                sensorInList.sensor = newSensor;
-                System.out.println("newSensor (id: " + sensorInList.sensor.getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorRegistry");
+        for (int i = 0; i < registry.size(); i++){
+            if(registry.get(i).sensor.equals(oldSensor)){
+                registry.set(i, new SensorRegistry(newSensor));
+                System.out.println("newSensor (id: " + newSensor.getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorRegistry");
             }
         }
     }

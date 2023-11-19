@@ -37,10 +37,10 @@ public class SensorLocationPairings {
 
     // Replace Sensor given the oldSensor is paired and newSensor isn't
     public static void replaceSensor(Sensor oldSensor, Sensor newSensor){
-        for(SensorLocationPairing<Sensor, Location> sensorLocationPairing : sensorLocationPairings){
-            if(sensorLocationPairing.getSensor().equals(oldSensor)) {
-                sensorLocationPairing = new SensorLocationPairing<Sensor, Location>(newSensor, sensorLocationPairing.getLocation());
-                System.out.println("newSensor (id: " + sensorLocationPairing.getSensor().getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorLocationPairings");
+        for (int i = 0; i < sensorLocationPairings.size(); i++){
+            if(sensorLocationPairings.get(i).getSensor().equals(oldSensor)){
+                sensorLocationPairings.set(i, new SensorLocationPairing<Sensor, Location>(newSensor, sensorLocationPairings.get(i).getLocation()));
+                System.out.println("newSensor (id: " + newSensor.getID() + ") has now replaced oldSensor (id: " + oldSensor.getID() + ") in the SensorLocationPairings");
             }
         }
     }
